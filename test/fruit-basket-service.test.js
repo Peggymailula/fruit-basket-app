@@ -4,7 +4,7 @@ const pg = require("pg");
 const Pool = pg.Pool;
 require('dotenv').config()
 
-const connectionString = process.env.DATABASE_URL  // your database URL here
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/fruit_webapp'
 
 const pool = new Pool({
     connectionString

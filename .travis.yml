@@ -1,0 +1,18 @@
+language: node_js
+
+env:
+  - DATABASE_URL=postgresql://postgres@localhost:5432/fruit_webapp
+
+node_js:  
+  - "12.22.5"
+
+  
+
+before_script:
+  - npm install
+  - psql -c 'create database  fruit_webapp;' -U postgres
+  - psql -U postgres -d fruit_webapp -a -f sql/create-tables.sql
+  - psql -U postgres -d fruit_webapp -a -f sql/insert-data.sql
+
+services:
+  - postgresql
